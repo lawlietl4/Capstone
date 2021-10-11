@@ -1,0 +1,46 @@
+capstone-api/node_modules
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+capstone-app/dist
+capstone-app/tmp
+capstone-app/out-tsc
+# Only exists if Bazel was run
+capstone-app/bazel-out
+
+# dependencies
+capstone-app/node_modules
+
+# profiling files
+chrome-profiler-events*.json
+
+# IDEs and editors
+capstone-app/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# misc
+capstone-app/.sass-cache
+capstone-app/connect.lock
+capstone-app/coverage
+capsotne-app/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+capstone-app/typings
+
+# System Files
+.DS_Store
+Thumbs.db
