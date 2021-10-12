@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
     var username = 'username';
     // res.cookie('userIsLoggedIn',username,{maxAge:10800}).send("cookie set");
     // console.log(document.cookie);
-    return res.redirect(307, "./login.html");
+    return res.redirect(307, "./");
 });
 
 app.post('/', (req, res) => {
