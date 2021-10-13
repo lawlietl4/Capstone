@@ -7,12 +7,10 @@ import { TicketViewerComponent } from '../ticketviewer/ticketviewer.component';
   templateUrl: './main-window.component.html',
   styleUrls: ['./main-window.component.css']
 })
+
 export class MainWindowComponent implements OnInit {
   
-  constructor() {
-    
-   }
-
+  constructor() { }
   ngOnInit(): void {
   }
 

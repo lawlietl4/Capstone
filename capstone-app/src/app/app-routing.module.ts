@@ -10,10 +10,11 @@ const routes: Routes = [
     {
       path: 'ticket-viewer', component: TicketViewerComponent
     }
-  ] },
+  ] 
+  },
   { path: 'index', redirectTo: ''},
   { path: '404', component: PageNotFoundComponent},
-  { path: '**', redirectTo:'/index', pathMatch: 'full' },
+  { path: '**', redirectTo:'index', pathMatch: 'full' },
 ];
 
 @NgModule({
