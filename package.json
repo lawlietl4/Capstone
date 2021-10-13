@@ -1,6 +1,6 @@
 {
     "scripts": {
-        "start": "(cd /home/nick/Documents/Capstone/capstone-api && nodemon --exec babel-node src/index.js) & (cd /home/nick/Documents/Capstone/capstone-app && npm run start)",
+        "start": "(cd ./capstone-api && nodemon --exec babel-node src/index.js) & (cd ./capstone-app && npm run start)",
         "test": "No test has been specified for this project!"
     }
 }
