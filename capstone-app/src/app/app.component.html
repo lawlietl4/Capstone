@@ -3,11 +3,8 @@
 <head></head>
 
 <body>
-  <h1>Test Angular Router App</h1>
   <nav>
-    <ul>
-      <li><a routerLink="/main-window" routerLinkActive="active">My Main Window</a></li>
-    </ul>
+    <a *ngFor="let component of components"></a>
   </nav>
   <router-outlet></router-outlet>
 </body>
