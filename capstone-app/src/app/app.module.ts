@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainWindowComponent } from './main-window/main-window.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { TicketViewerComponent } from './ticketviewer/ticketviewer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainWindowComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    TicketViewerComponent
   ],
   imports: [
     BrowserModule,

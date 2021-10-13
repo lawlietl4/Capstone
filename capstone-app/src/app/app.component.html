@@ -3,8 +3,9 @@
 <head></head>
 
 <body>
+  <h2>Ticket Viewer</h2>
   <nav>
-    <a *ngFor="let component of components"></a>
+    <a [routerLink]="['index',1]"></a>
   </nav>
   <router-outlet></router-outlet>
 </body>
