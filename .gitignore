@@ -9,8 +9,8 @@ capstone-app/out-tsc
 capstone-app/bazel-out
 
 # dependencies
+capstone-api/node_modules
 capstone-app/node_modules
-/node_modules
 package-lock.json
 # profiling files
 chrome-profiler-events*.json
