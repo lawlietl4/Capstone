@@ -5,7 +5,9 @@
 <body>
   <h2>Ticket Viewer</h2>
   <nav>
-    <a [routerLink]="['',1]"></a>
+    <a *ngFor="let page of pages">
+      <div>{{ page.name }}</div>
+    </a>
   </nav>
   <router-outlet></router-outlet>
 </body>
