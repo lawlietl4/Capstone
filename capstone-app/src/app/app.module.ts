@@ -6,13 +6,17 @@ import { AppComponent } from './app.component';
 import { MainWindowComponent } from './main-window/main-window.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TicketViewerComponent } from './ticketviewer/ticketviewer.component';
+import { LoginComponent } from './login/login.component';
+import { StudentAdderComponent } from './student-adder/student-adder.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainWindowComponent,
     PageNotFoundComponent,
-    TicketViewerComponent
+    TicketViewerComponent,
+    LoginComponent,
+    StudentAdderComponent
   ],
   imports: [
     BrowserModule,

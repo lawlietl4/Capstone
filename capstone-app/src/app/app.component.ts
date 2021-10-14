@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
+import { pages } from './pages';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +8,8 @@ import { AppRoutingModule } from './app-routing.module';
 })
 export class AppComponent {
   title = 'capstone-app';
-  constructor(pages: AppRoutingModule){
-    pages
-  };
-  
+  pages = pages;
+  click(){
+    window.alert("You clicked me!");
+  }
 };
