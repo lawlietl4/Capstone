@@ -1,22 +1,13 @@
-<!DOCTYPE html>
-<html>
-
-<head></head>
-
-<body>
-  <h2>Ticket Viewer</h2>
-  <nav>
-    <ul>
-      <li *ngFor='let page of pages'>
-        <div id='page.name'>
-          <a [title]="page.description" [routerLink]="['/', page.url]">
-            {{ page.name }}
-          </a>
-        </div>
-      </li>
-    </ul>
-  </nav>
-  <router-outlet></router-outlet>
-</body>
-
-</html>
+<h2>Ticket Viewer</h2>
+<nav>
+  <ul>
+    <li *ngFor='let page of pages'>
+      <div id='page.name'>
+        <a [routerLinkActive]="'active'" [title]="page.description" [routerLink]="['/', page.url]">
+          {{ page.name }}
+        </a>
+      </div>
+    </li>
+  </ul>
+</nav>
+<router-outlet></router-outlet>

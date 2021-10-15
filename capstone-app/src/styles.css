@@ -1,1 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+h2{
+    text-align: center;
+}
+ul {
+    list-style-type: none;
+    margin:0;
+    padding:0;
+    overflow: hidden;
+    width: 100%;
+}
+li{
+    float: left;
+}
+li a{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 8px;
+    background-color: grey;
+}
+li a:hover{
+    background-color: #111;
+}
+li a.active{
+    background-color: #04aa6d;
+}
