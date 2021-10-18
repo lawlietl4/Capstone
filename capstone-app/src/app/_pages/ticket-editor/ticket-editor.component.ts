@@ -18,7 +18,8 @@ export class TicketEditorComponent implements OnInit {
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      loaner: ['', [Validators.required, Validators.pattern('^[0-9]{5}(?:-[0-9]{4})?$')]]
+      loaner: ['', [Validators.required, Validators.pattern('^[0-9]{5}(?:-[0-9]{4})?$')]],
+      description: ['', Validators.required],
     });
   }
 
@@ -37,7 +38,11 @@ export class TicketEditorComponent implements OnInit {
   invalidLoaner() {
     return (this.submitted && this.userForm.controls.loaner.errors != null);
   }
-  
+ 
+  emptyDescription() {
+return (this.submitted && this.userForm.controls.loaner.errors != null);
+  }
+
   onSubmit() {
     this.submitted = true;
 
