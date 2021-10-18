@@ -38,9 +38,9 @@ export class TicketEditorComponent implements OnInit {
   invalidLoaner() {
     return (this.submitted && this.userForm.controls.loaner.errors != null);
   }
- 
+
   emptyDescription() {
-return (this.submitted && this.userForm.controls.loaner.errors != null);
+    return (this.submitted && this.userForm.controls.loaner.errors != null);
   }
 
   onSubmit() {
