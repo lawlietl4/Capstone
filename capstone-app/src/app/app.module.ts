@@ -8,6 +8,11 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { TicketViewerComponent } from './ticketviewer/ticketviewer.component';
 import { LoginComponent } from './login/login.component';
 import { StudentAdderComponent } from './student-adder/student-adder.component';
+import { TicketEditorComponent } from './ticket-editor/ticket-editor.component';
+import { AssetViewerComponent } from './asset-viewer/asset-viewer.component';
+import { AssetEditorComponent } from './asset-editor/asset-editor.component';
+import { AssetLookupComponent } from './asset-lookup/asset-lookup.component';
+import { LoaningTabComponent } from './loaning-tab/loaning-tab.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +21,12 @@ import { StudentAdderComponent } from './student-adder/student-adder.component';
     PageNotFoundComponent,
     TicketViewerComponent,
     LoginComponent,
-    StudentAdderComponent
+    StudentAdderComponent,
+    TicketEditorComponent,
+    AssetViewerComponent,
+    AssetEditorComponent,
+    AssetLookupComponent,
+    LoaningTabComponent
   ],
   imports: [
     BrowserModule,

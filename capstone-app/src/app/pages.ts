@@ -11,18 +11,33 @@ export const pages = [
         url: 'ticket-viewer'
     },
     {
-        name:'Login',
-        description: 'login here',
-        url: 'login'
+        name: 'Ticket Editor',
+        description: 'edit/create tickets here',
+        url: 'ticket-editor'
+    },
+    {
+        name: 'Asset Viewer',
+        description: 'View all school assets here',
+        url: 'asset-viewer'
+    },
+    {
+        name: 'Asset Editor',
+        description: 'Edit school assets here',
+        url: 'asset-editor'
+    },
+    {
+        name:'Asset Lookup',
+        description: 'Lookup any school assets here',
+        url: 'asset-lookup'
+    },
+    {
+        name: 'Loaning',
+        description: 'Keep track of loaning things like chargers here',
+        url: 'loaning'
     },
     {
         name: 'New Student Adder',
         description: 'add new students using this tool',
         url: 'student-adder'
-    },
-    {
-        name: 'not implemented yet',
-        description: 'you landed here because you clicked on something that has no content',
-        url: '404not-found'
     },
 ]
