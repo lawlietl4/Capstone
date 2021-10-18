@@ -1,19 +1,25 @@
 <legend>Tickets open</legend>
-<div>
-    <div class="form-group row">
-        <!-- GUD -->
-        <label class="col-xs-6 col-form-label">GUID</label>
-        <div class="col-xs-6">{{ user.guid }}</div>
-    </div>
-    <div class="form-group row">
-        <!-- First name -->
-        <label class="col-xs-6 col-form-label">First Name</label>
-        <div class="col-xs-6">{{ user.first_name }}</div>
-    </div>
-    <div class="form-group row">
-        <!-- Last name -->
-        <label class="col-xs-6 col-form-label">Last Name</label>
-        <div class="col-xs-6">{{ user.last_name }}</div>
-    </div>
+<div id='table'>
+    <table>
+        <tr>
+            <th class="col-xs-6 col-form-label">Ticket ID</th>
+            <th class="col-xs-6 col-form-label">First Name</th>
+            <th class="col-xs-6 col-form-label">Last Name</th>
+        </tr>
+        <tr *ngFor='let item of users'>
+            <td class="form-group row">
+                <!-- GUID -->
+                <div class="col-xs-6">{{ item.ID }}</div>
+            </td>
+            <td class="form-group row">
+                <!-- First name -->
+                <div class="col-xs-6">{{ item.firstName }}</div>
+            </td>
+            <td class="form-group row">
+                <!-- Last name -->
+                <div class="col-xs-6">{{ item.lastName }}</div>
+            </td>
+        </tr>
+    </table>
 </div>
 <!--<p>ticket-viewer works!</p>-->

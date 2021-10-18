@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserInfoModel } from '../../_models/UserInfoModel';
+import { users } from '../../_models/users';
 
 @Component({
   selector: 'app-ticketviewer',
@@ -7,14 +7,9 @@ import { UserInfoModel } from '../../_models/UserInfoModel';
   styleUrls: ['./ticketviewer.component.css']
 })
 export class TicketViewerComponent implements OnInit {
+  users=users;
 
   constructor() { }
   ngOnInit(): void {
   }
-  user: UserInfoModel = new UserInfoModel({guid: "D21ds12x",
-    first_name: 'John',
-    last_name: 'Doe',
-    email: 'jdoe@student.neumont.edu',
-    loaner: '12532'
-  });
 }
