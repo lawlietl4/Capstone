@@ -2,16 +2,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 //Page Imports
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { TicketViewerComponent } from './ticketviewer/ticketviewer.component';
-import { LoginComponent } from './login/login.component';
-import { StudentAdderComponent } from './student-adder/student-adder.component';
+import { PageNotFoundComponent } from './_pages/page-not-found/page-not-found.component';
+import { TicketViewerComponent } from './_pages/ticketviewer/ticketviewer.component';
+import { LoginComponent } from './_pages/login/login.component';
+import { StudentAdderComponent } from './_pages/student-adder/student-adder.component';
 import { AuthorizationGuard } from './_guards/authorization.guard';
-import { TicketEditorComponent } from './ticket-editor/ticket-editor.component';
-import { AssetViewerComponent } from './asset-viewer/asset-viewer.component';
-import { AssetEditorComponent } from './asset-editor/asset-editor.component';
-import { AssetLookupComponent } from './asset-lookup/asset-lookup.component';
-import { LoaningTabComponent } from './loaning-tab/loaning-tab.component';
+import { TicketEditorComponent } from './_pages/ticket-editor/ticket-editor.component';
+import { AssetViewerComponent } from './_pages/asset-viewer/asset-viewer.component';
+import { AssetEditorComponent } from './_pages/asset-editor/asset-editor.component';
+import { AssetLookupComponent } from './_pages/asset-lookup/asset-lookup.component';
+import { LoaningTabComponent } from './_pages/loaning-tab/loaning-tab.component';
 
 const routes: Routes = [
   { path: 'ticket-viewer', component: TicketViewerComponent, canActivate: [AuthorizationGuard] },

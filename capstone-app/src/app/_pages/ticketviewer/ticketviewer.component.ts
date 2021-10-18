@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserInfoModel } from '../_models/UserInfoModel';
+import { UserInfoModel } from '../../_models/UserInfoModel';
 
 @Component({
   selector: 'app-ticketviewer',
