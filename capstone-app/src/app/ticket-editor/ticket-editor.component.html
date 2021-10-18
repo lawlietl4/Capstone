@@ -1,1 +1,37 @@
 <p>ticket-editor works!</p>
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-group" [ngClass]="{ 'has-error': invalidFirstName() }">
+        <!-- First Name -->
+        <label for="first_name" class="control-label">First Name</label>
+        <input type="text" formControlName="first_name" class="form-control" id="first_name" name="first_name"
+            placeholder="Martin">
+        <p *ngIf="invalidFirstName()" id="first_name_error" class="help-block">Invalid first name.</p>
+    </div>
+
+    <div class="form-group" [ngClass]="{ 'has-error': invalidLastName() }">
+        <!-- Last Name -->
+        <label for="last_name" class="control-label">Last Name</label>
+        <input type="text" formControlName="last_name" class="form-control" id="last_name" name="last_name"
+            placeholder="Toha">
+        <p *ngIf="invalidLastName()" id="last_name_error" class="help-block">Invalid last name.</p>
+    </div>
+
+    <div class="form-group" [ngClass]="{ 'has-error': invalidEmail() }">
+        <!-- Email -->
+        <label for="email" class="control-label">E-mail</label>
+        <input type="text" formControlName="email" class="form-control" id="email" name="email"
+            placeholder="your@email.com">
+        <p *ngIf="invalidEmail()" id="email_error" class="help-block">Invalid email address.</p>
+    </div>
+    <div class="form-group" [ngClass]="{ 'has-error': invalidLoaner() }">
+        <!-- Zip Code-->
+        <label for="zipcode" class="control-label">Loaner ID</label>
+        <input type="text" formControlName="loaner" class="form-control" id="loaner" name="loaner" placeholder="#####">
+        <p *ngIf="invalidLoaner()" id="loaner_error" class="help-block">Invalid loaner ID.</p>
+    </div>
+    <div class="form-group has-error">
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>

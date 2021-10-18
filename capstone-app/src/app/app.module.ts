@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
 import { MainWindowComponent } from './main-window/main-window.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TicketViewerComponent } from './ticketviewer/ticketviewer.component';
@@ -30,7 +32,8 @@ import { LoaningTabComponent } from './loaning-tab/loaning-tab.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
