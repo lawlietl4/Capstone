@@ -15,19 +15,21 @@ import { LoaningTabComponent } from './_pages/loaning-tab/loaning-tab.component'
 import { TicketInfoComponent } from './_pages/ticket-info/ticket-info.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/ticket-viewer', pathMatch:'full' },
-  { path: 'ticket-viewer', component: TicketViewerComponent, canActivate: [AuthorizationGuard], children: [
+  { path: '', redirectTo: '/ticket-viewer', pathMatch: 'full' },
+  {
+    path: 'ticket-viewer', canActivate: [AuthorizationGuard], children: [
+      { path: '', component: TicketViewerComponent },
       { path: ':id', component: TicketInfoComponent },
-    ] 
+    ]
   },
   { path: 'ticket-editor', component: TicketEditorComponent },
   /*{ path: 'login', component: LoginComponent },*/
   // { path: 'ticket-viewer/:id', component: TicketInfoComponent },
-  { path: 'student-adder', component: StudentAdderComponent},
-  { path: 'asset-viewer', component: AssetViewerComponent},
-  { path: 'asset-editor', component: AssetEditorComponent},
-  { path: 'asset-lookup', component: AssetLookupComponent},
-  { path: 'loaning', component: LoaningTabComponent},
+  { path: 'student-adder', component: StudentAdderComponent },
+  { path: 'asset-viewer', component: AssetViewerComponent },
+  { path: 'asset-editor', component: AssetEditorComponent },
+  { path: 'asset-lookup', component: AssetLookupComponent },
+  { path: 'loaning', component: LoaningTabComponent },
   { path: '**', component: PageNotFoundComponent, pathMatch: 'full' },
 ];
 
