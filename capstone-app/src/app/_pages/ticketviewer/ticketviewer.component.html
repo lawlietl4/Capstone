@@ -6,20 +6,23 @@
             <th class="col-xs-6 col-form-label">First Name</th>
             <th class="col-xs-6 col-form-label">Last Name</th>
         </tr>
-        <tr *ngFor='let item of users'>
-            <td class="form-group row">
-                <!-- GUID -->
-                <div class="col-xs-6">{{ item.ID }}</div>
-            </td>
-            <td class="form-group row">
-                <!-- First name -->
-                <div class="col-xs-6">{{ item.firstName }}</div>
-            </td>
-            <td class="form-group row">
-                <!-- Last name -->
-                <div class="col-xs-6">{{ item.lastName }}</div>
-            </td>
+        <tr *ngFor='let ticket of tickets'>
+            <a routerLink='./:id' fragment="info">
+                <td class="form-group row">
+                    <!-- GUID -->
+                    <div class="col-xs-6">{{ ticket.ID }}</div>
+                </td>
+                <td class="form-group row">
+                    <!-- First name -->
+                    <div class="col-xs-6">{{ ticket.firstName }}</div>
+                </td>
+                <td class="form-group row">
+                    <!-- Last name -->
+                    <div class="col-xs-6">{{ ticket.lastName }}</div>
+                </td>
+            </a>
         </tr>
     </table>
 </div>
+<router-outlet></router-outlet>
 <!--<p>ticket-viewer works!</p>-->

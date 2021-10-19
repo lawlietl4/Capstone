@@ -15,6 +15,7 @@ import { AssetViewerComponent } from './_pages/asset-viewer/asset-viewer.compone
 import { AssetEditorComponent } from './_pages/asset-editor/asset-editor.component';
 import { AssetLookupComponent } from './_pages/asset-lookup/asset-lookup.component';
 import { LoaningTabComponent } from './_pages/loaning-tab/loaning-tab.component';
+import { TicketInfoComponent } from './_pages/ticket-info/ticket-info.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { LoaningTabComponent } from './_pages/loaning-tab/loaning-tab.component'
     AssetViewerComponent,
     AssetEditorComponent,
     AssetLookupComponent,
-    LoaningTabComponent
+    LoaningTabComponent,
+    TicketInfoComponent
   ],
   imports: [
     BrowserModule,

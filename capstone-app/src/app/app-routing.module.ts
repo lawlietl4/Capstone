@@ -12,17 +12,22 @@ import { AssetViewerComponent } from './_pages/asset-viewer/asset-viewer.compone
 import { AssetEditorComponent } from './_pages/asset-editor/asset-editor.component';
 import { AssetLookupComponent } from './_pages/asset-lookup/asset-lookup.component';
 import { LoaningTabComponent } from './_pages/loaning-tab/loaning-tab.component';
+import { TicketInfoComponent } from './_pages/ticket-info/ticket-info.component';
 
 const routes: Routes = [
-  { path: 'ticket-viewer', component: TicketViewerComponent, canActivate: [AuthorizationGuard] },
+  { path: '', redirectTo: '/ticket-viewer', pathMatch:'full' },
+  { path: 'ticket-viewer', component: TicketViewerComponent, canActivate: [AuthorizationGuard], children: [
+      { path: ':id', component: TicketInfoComponent },
+    ] 
+  },
   { path: 'ticket-editor', component: TicketEditorComponent },
   /*{ path: 'login', component: LoginComponent },*/
+  // { path: 'ticket-viewer/:id', component: TicketInfoComponent },
   { path: 'student-adder', component: StudentAdderComponent},
   { path: 'asset-viewer', component: AssetViewerComponent},
   { path: 'asset-editor', component: AssetEditorComponent},
   { path: 'asset-lookup', component: AssetLookupComponent},
   { path: 'loaning', component: LoaningTabComponent},
-  { path: '', redirectTo: '/ticket-viewer', pathMatch:'full' },
   { path: '**', component: PageNotFoundComponent, pathMatch: 'full' },
 ];
 

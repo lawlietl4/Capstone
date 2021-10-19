@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { users } from '../../_models/users';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-ticketviewer',
@@ -7,9 +8,11 @@ import { users } from '../../_models/users';
   styleUrls: ['./ticketviewer.component.css']
 })
 export class TicketViewerComponent implements OnInit {
-  users=users;
+  tickets=users;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) {
+    this.route.params.subscribe( params=> console.log(params));
+   }
   ngOnInit(): void {
   }
 }
