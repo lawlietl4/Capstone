@@ -1,1 +1,37 @@
-<p>student-adder works!</p>
+<!-- <p>student-adder works!</p> -->
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-group" [ngClass]="{ 'has-error': invalidFirstName() }">
+        <!-- First Name -->
+        <label for="first_name" class="control-label">First Name</label>
+        <input type="text" formControlName="first_name" class="form-control" id="first_name" name="first_name"
+            placeholder="John">
+        <p *ngIf="invalidFirstName()" id="first_name_error" class="help-block">Invalid first name.</p>
+    </div>
+
+    <div class="form-group" [ngClass]="{ 'has-error': invalidLastName() }">
+        <!-- Last Name -->
+        <label for="last_name" class="control-label">Last Name</label>
+        <input type="text" formControlName="last_name" class="form-control" id="last_name" name="last_name"
+            placeholder="Doe">
+        <p *ngIf="invalidLastName()" id="last_name_error" class="help-block">Invalid last name.</p>
+    </div>
+
+    <div class="form-group" [ngClass]="{ 'has-error': invalidEmail() }">
+        <!-- Email -->
+        <label for="email" class="control-label">E-mail</label>
+        <input [(ngModel)]="email" #name="" type="text" formControlName="email" class="form-control" id="email" name="email"
+            placeholder="example@student.neumont.edu" required minlength="3">
+        <p *ngIf="invalidEmail()" id="email_error" class="help-block">Invalid email address.</p>
+    </div>
+    <div class="form-group" [ngClass]="{ 'has-error': invalidSerial() }">
+        <!-- Serial Number from laptop-->
+        <label for="serial" class="contorl-label">Serial Number</label>
+        <input type="text" formControlName="serial" class="form-control" id="serial" name="serial"
+            placeholder="Input serial number here">
+        <p *ngIf="invalidSerial()" id="serial_error" class="help-block">Serial Number invalid</p>
+    </div>
+    <div class="form-group has-error">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>

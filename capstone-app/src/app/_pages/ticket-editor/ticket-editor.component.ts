@@ -24,28 +24,28 @@ export class TicketEditorComponent implements OnInit {
   }
 
   invalidFirstName() {
-    return (this.submitted && this.userForm.controls.first_name.errors != null);
+    return (this.submitted && this.userForm.controls.first_name.invalid);
   }
 
   invalidLastName() {
-    return (this.submitted && this.userForm.controls.last_name.errors != null);
+    return (this.submitted && this.userForm.controls.last_name.invalid);
   }
 
   invalidEmail() {
-    return (this.submitted && this.userForm.controls.email.errors != null);
+    return (this.submitted && this.userForm.controls.email.invalid);
   }
 
   invalidLoaner() {
-    return (this.submitted && this.userForm.controls.loaner.errors != null);
+    return (this.submitted && this.userForm.controls.loaner.invalid);
   }
 
   emptyDescription() {
-    return (this.submitted && this.userForm.controls.loaner.errors != null);
+    return (this.submitted && this.userForm.controls.description.invalid);
   }
 
   onSubmit() {
     this.submitted = true;
-
+    console.log(this.userForm.value);
     if (this.userForm.invalid == true) {
       return;
     }

@@ -32,10 +32,11 @@
         <p *ngIf="invalidLoaner()" id="loaner_error" class="help-block">Invalid loaner ID.</p>
     </div>
     <div class="form-group" [ngClass]="{ 'has-error': emptyDescription() }">
-	<!-- Description -->
-	<label for="description" class="control-label">Description</label>
-	<input type="text" formControlName="description" class="form-control" id="description" name="description" placeholder="Explain what happened">
-	<p *ngIf="emptyDescription()" id="description_error" class="help-block">Description cannot be empty.</p>
+        <!-- Description -->
+        <label for="description" class="control-label">Description</label>
+        <textarea formControlName="description" class="form-control" id="description" name="description"
+            placeholder="Explain what happened" rows="5"></textarea>
+        <p *ngIf="emptyDescription()" id="description_error" class="help-block">Description cannot be empty.</p>
     </div>
     <div class="form-group has-error">
         <!-- Submit Button -->
