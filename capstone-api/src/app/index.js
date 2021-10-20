@@ -5,7 +5,7 @@ const pool = new Pool({
     user: process.env.USER,
     host: process.env.HOST,
     password: process.env.PASSWORD,
-    port: 5428
+    port: process.env.DB_PORT,
 });
 require('dotenv').config();
 pool.query('SELECT NOW()', (err,res)=>{
