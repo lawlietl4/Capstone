@@ -36,7 +36,7 @@ export class StudentAdderComponent implements OnInit {
 
   invalidEmail() {
     // console.log(!this.userForm.controls.email.invalid);
-    console.log(this.submitted);
+    // console.log(this.submitted);
     return (this.submitted && (this.userForm.controls.email.invalid));
   }
 
