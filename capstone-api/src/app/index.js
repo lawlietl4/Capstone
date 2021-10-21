@@ -1,20 +1,59 @@
+// require('dotenv').config({
+//     path: '/home/nick/Documents/Capstone/capstone-api/.env',
+// });
 const { Pool } = require('pg');
 const express = require('express');
+const { json } = require('express');
 const app = express();
+const details = {
+    user: 'postgres',
+    host: 'localhost',
+    password: 'Ikeamonkey1',
+    db_port: '5432',
+    database: 'testdata',
+    port: '3000'
+};
+
+// console.log(details);
+
 const pool = new Pool({
-    user: process.env.USER,
-    host: process.env.HOST,
-    password: process.env.PASSWORD,
-    port: process.env.DB_PORT,
+    user: details.user,
+    host: details.host,
+    password: details.password,
+    port: details.db_port,
+    database: details.database,
 });
-require('dotenv').config();
-pool.query('SELECT NOW()', (err,res)=>{
-    console.log(err,res);
-    pool.end();
+// console.log(pool);
+const output = pool.query('SELECT * FROM users AS output', (err,res)=>{
+    if(err){
+        console.log(err);
+    } else {
+        console.log(res.rows[0]);
+    }
 });
-app.post('/', function(req,res){
+console.log(output);
+// console.log(sql);
+// const html = `  <html>
+//                     <head></head>
+//                     <body>
+//                         <div id='SQLQuery'>${sql}</div>
+//                     </body>
+//                 </html>`;
+app.get('/', function (req, res) {
+    res.send(`
+    <html>
+        <head></head>
+        <body>
+            <div id='SQLOutput>${output}</div>
+        </body>
+    </html>
+    `);
+});
+
+app.post('/', function (req, res) {
     res.send('hello there');
 });
-app.listen(process.env.PORT, ()=>{
-    console.log(`Express listening on ${process.env.PORT}`);
+
+app.listen(details.port || 3000, () => {
+    console.log(`Express listening on ${details.port}`);
 });
