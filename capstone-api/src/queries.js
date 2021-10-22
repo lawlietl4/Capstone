@@ -36,10 +36,12 @@ const getUserById = (request, response) => {
 
 const createUser = (request, response) => {
     const { name, email } = request.body;
-
+    // console.log(request.body);
     pool.query('INSERT INTO users (name, email) VALUES ($1, $2)', [name, email], (error, results) => {
         if (error) {
             throw error;
+        } else {
+            console.log('user inserted!');
         }
         response.status(201).send(`User added with ID: ${results.insertId}`);
     });
