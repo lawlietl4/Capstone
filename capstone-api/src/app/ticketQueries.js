@@ -13,8 +13,8 @@ const pool = new Pool({
     database: process.env.database,
 });
 
-const getUser = (req, res) => {
-    pool.query('SELECT * FROM users ORDER BY id ASC', (err, results) => {
+const getTicket = (req, res) => {
+    pool.query(`SELECT * FROM ${process.env.ticket_table} ORDER BY id ASC`, (err, results) => {
         if (err) {
             throw err;
         } else {
@@ -23,10 +23,10 @@ const getUser = (req, res) => {
     });
 };
 
-const getUserById = (request, response) => {
+const getTicketById = (request, response) => {
     const id = parseInt(request.params.id);
 
-    pool.query('SELECT * FROM users WHERE id = $1', [id], (error, results) => {
+    pool.query(`SELECT * FROM ${process.env.ticket_table} WHERE id = $1`, [id], (error, results) => {
         if (error) {
             throw error;
         }
@@ -34,26 +34,26 @@ const getUserById = (request, response) => {
     });
 };
 
-const createUser = (request, response) => {
-    const { name, email } = request.body;
+const createTicket = (request, response) => {
+    const { name, email, loaner, comments } = request.body;
     // console.log(request.body);
-    pool.query('INSERT INTO users (name, email) VALUES ($1, $2)', [name, email], (error, results) => {
+    pool.query(`INSERT INTO ${process.env.ticket_table} (name, email,loaner,comments) VALUES ($1, $2)`, [name, email, loaner, comments], (error, results) => {
         if (error) {
             throw error;
         } else {
             console.log('user inserted!');
         }
-        response.status(201).send(`User added with ID: ${results.insertId}`);
+        response.status(201).send(`User added with ID: ${results.rows[0]}`);
     });
 };
 
-const updateUser = (request, response) => {
+const updateTicket = (request, response) => {
     const id = parseInt(request.params.id);
-    const { name, email } = request.body;
+    const { name, email, loaner, comments } = request.body;
 
     pool.query(
-        'UPDATE users SET name = $1, email = $2 WHERE id = $3',
-        [name, email, id],
+        `UPDATE ${process.env.ticket_tables} SET name = $1, email = $2, loaner = $3, comments = $4 WHERE id = $5`,
+        [name, email, loaner, comments, id],
         (error, results) => {
             if (error) {
                 throw error;
@@ -62,10 +62,11 @@ const updateUser = (request, response) => {
         }
     );
 };
-const deleteUser = (request, response) => {
+
+const deleteTicket = (request, response) => {
     const id = parseInt(request.params.id);
 
-    pool.query('DELETE FROM users WHERE id = $1', [id], (error, results) => {
+    pool.query(`DELETE FROM ${process.env.ticket_table} WHERE id = $1`, [id], (error, results) => {
         if (error) {
             throw error;
         }
@@ -73,16 +74,10 @@ const deleteUser = (request, response) => {
     });
 };
 
-app.post('/', function (req, res) {
-    res.send('hello there');
-});
-
-
-
-module.exports={
-    createUser,
-    updateUser,
-    deleteUser,
-    getUserById, 
-    getUser
+module.exports = {
+    createTicket,
+    updateTicket,
+    deleteTicket,
+    getTicketById,
+    getTicket
 };
