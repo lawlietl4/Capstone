@@ -47,7 +47,10 @@ const onStart = (req, res) => {
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 app.get('/', onStart);
+// app.get('/api', listAll);
+
 app.get('/api/users', userQueries.getUser);
 app.post('/api/users', userQueries.createUser);
 app.get('/api/users/:id', userQueries.getUserById);

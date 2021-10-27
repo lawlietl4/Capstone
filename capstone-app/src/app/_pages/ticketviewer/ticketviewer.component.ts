@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { users } from '../../_models/users';
-
 
 @Component({
   selector: 'app-ticketviewer',
@@ -8,12 +6,6 @@ import { users } from '../../_models/users';
   styleUrls: ['./ticketviewer.component.css']
 })
 export class TicketViewerComponent implements OnInit {
-  tickets=users;
-
-  constructor() {
-    
-  }
-  ngOnInit(): void {
-    
-  }
+  constructor() { }
+  ngOnInit(): void { }
 }

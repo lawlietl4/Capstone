@@ -1,28 +1,28 @@
+<p *ngIf='tickets|async'>Tickets are empty</p>
 <legend>Tickets open</legend>
-<div id='table'>
-    <table>
-        <tr>
-            <th class="col-xs-6 col-form-label">Ticket ID</th>
-            <th class="col-xs-6 col-form-label">First Name</th>
-            <th class="col-xs-6 col-form-label">Last Name</th>
-        </tr>
-        <tr *ngFor='let ticket of tickets'>
-            <a [routerLink]="['/ticket-viewer',ticket.ID]" fragment="info">
-                <td class="form-group row">
-                    <!-- GUID -->
-                    <div class="col-xs-6">{{ ticket.ID }}</div>
-                </td>
-                <td class="form-group row">
-                    <!-- First name -->
-                    <div class="col-xs-6">{{ ticket.firstName }}</div>
-                </td>
-                <td class="form-group row">
-                    <!-- Last name -->
-                    <div class="col-xs-6">{{ ticket.lastName }}</div>
-                </td>
-            </a>
-        </tr>
-    </table>
-</div>
-<router-outlet></router-outlet>
-<!--<p>ticket-viewer works!</p>-->
+  <div id='tickets table'>
+      <table>
+          <tr>
+              <th class="col-xs-6 col-form-label">Ticket ID</th>
+              <th class="col-xs-6 col-form-label">First Name</th>
+              <th class="col-xs-6 col-form-label">Last Name</th>
+          </tr>
+          <tr *ngFor='let ticket of tickets|async'>
+              <a [routerLink]="['/ticket-viewer',ticket.id]" fragment="info">
+                  <td class="form-group row">
+                      <!-- GUID -->
+                      <div class="col-xs-6">{{ ticket.id }}</div>
+                  </td>
+                  <td class="form-group row">
+                      <!-- First name -->
+                      <div class="col-xs-6">{{ ticket.user }}</div>
+                  </td>
+                  <td class="form-group row">
+                      <!-- Last name -->
+                      <div class="col-xs-6">{{ ticket.loaner }}</div>
+                  </td>
+              </a>
+          </tr>
+      </table>
+  </div>
+  <router-outlet></router-outlet>

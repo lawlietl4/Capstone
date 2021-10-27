@@ -18,7 +18,7 @@ const getTicket = (req, res) => {
         if (err) {
             throw err;
         } else {
-            res.json(results.rows);
+            return res.json(results.rows);
         }
     });
 };

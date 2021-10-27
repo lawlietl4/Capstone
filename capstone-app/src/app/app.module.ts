@@ -31,7 +31,7 @@ import { TicketInfoComponent } from './_pages/ticket-info/ticket-info.component'
     AssetEditorComponent,
     AssetLookupComponent,
     LoaningTabComponent,
-    TicketInfoComponent
+    TicketInfoComponent,
   ],
   imports: [
     BrowserModule,
