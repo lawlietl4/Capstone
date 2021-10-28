@@ -3,5 +3,6 @@ export interface Ticket {
     user: string,
     email: string,
     loaner: string,
+    title: string,
     comments: string
 }
