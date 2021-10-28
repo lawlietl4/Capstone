@@ -1,8 +1,8 @@
 export interface Ticket {
     id: number,
-    user: string,
+    userName: string,
+    title: string,
     email: string,
     loaner: string,
-    title: string,
     comments: string
 }

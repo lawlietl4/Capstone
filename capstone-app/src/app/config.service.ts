@@ -1,16 +1,12 @@
 // Angular Modules 
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-@Injectable()
+
+@Injectable({ providedIn:'any' })
 export class ConfigService {
   private readonly API_server = 'http://localhost:3000'; //API host endpoint
 
-  constructor(private http: HttpClient) {
-    this.getTickets;
-    this.postTickets;
-    this.putTickets;
-    this.deleteTickets;
-  }//default constructor
+  constructor(private http: HttpClient) {  }//default constructor
 
   public getTickets() {
     return this.http.get(this.API_server + '/api/tickets');
