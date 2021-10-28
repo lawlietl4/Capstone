@@ -74,10 +74,22 @@ const deleteTicket = (request, response) => {
     });
 };
 
+const emailQuery = (req,res)=>{
+    const id = parseInt(req.params.id);
+
+    pool.query(`SELECT email FROM ${process.env.ticket_table} WHERE id=$1`, [id], (err, res)=>{
+        if(err){
+            console.log(err);
+        }
+        response.status(200).send(`user email pulled with id: ${id}`);
+    });
+};
+
 module.exports = {
     createTicket,
     updateTicket,
     deleteTicket,
     getTicketById,
-    getTicket
+    getTicket,
+    emailQuery
 };

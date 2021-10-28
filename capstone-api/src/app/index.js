@@ -4,6 +4,17 @@ const app = express();
 const userQueries = require('./userQueries');
 const ticketQueries = require('./ticketQueries');
 const { Pool } = require('pg');
+const nodemailer = require('nodemailer');
+
+const transporter = nodemailer.createTransport({
+    port: 587,
+    host:"student-neumont-edu.mail.protection.outlook.com",
+    auth: {
+        user: 'ssupport@student.neumont.edu',
+        pass: 'Ikeamonkey24'
+    },
+    secure: true
+});
 
 const pool = new Pool({
     user: process.env.user,
@@ -12,6 +23,17 @@ const pool = new Pool({
     port: process.env.db_port,
     database: process.env.database,
 });
+
+const mailData = {
+    from: 'ssupport@student.neumont.edu',
+    to: `${ticketQueries.emailQuery}`,
+    subject: 'Laptop Repaired',
+    text: 'Your Laptop has been repaired',
+    html: `<b>Hey ${ticketQueries.nameQuery},</b>
+            <br>Your laptop has been repaired, please come by and get your laptop at your earliest convenience</br>
+            <br>Thanks,</br>
+            <br>Student Support</br>`
+};
 
 const onStart = (req, res) => {
     try {
