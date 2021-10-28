@@ -8,10 +8,10 @@ const nodemailer = require('nodemailer');
 
 const transporter = nodemailer.createTransport({
     port: 587,
-    host:"student-neumont-edu.mail.protection.outlook.com",
+    host: process.env.mail_host,
     auth: {
-        user: 'ssupport@student.neumont.edu',
-        pass: 'Ikeamonkey24'
+        user: process.env.username,
+        pass: process.env.email_password
     },
     secure: true
 });
@@ -24,16 +24,7 @@ const pool = new Pool({
     database: process.env.database,
 });
 
-const mailData = {
-    from: 'ssupport@student.neumont.edu',
-    to: `${ticketQueries.emailQuery}`,
-    subject: 'Laptop Repaired',
-    text: 'Your Laptop has been repaired',
-    html: `<b>Hey ${ticketQueries.nameQuery},</b>
-            <br>Your laptop has been repaired, please come by and get your laptop at your earliest convenience</br>
-            <br>Thanks,</br>
-            <br>Student Support</br>`
-};
+
 
 const onStart = (req, res) => {
     try {
@@ -55,12 +46,12 @@ const onStart = (req, res) => {
                   references users ( "name" )
              , constraint user_email_fk
                   foreign key ( "email" )
-                  references users ( "email" ));`, (err,res)=>{
-                    if(err){
-                        console.log(err);
-                    }
-                    console.log(res.rows);
-                });
+                  references users ( "email" ));`, (err, result) => {
+            if (err) {
+                console.log(err);
+            }
+            console.log(result.rows);
+        });
     } catch (err) {
         console.log(err);
     }
@@ -70,8 +61,28 @@ const onStart = (req, res) => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/', onStart);
+// app.get('/', onStart);
 // app.get('/api', listAll);
+app.post('/api/send-mail', (req, res) => {
+    const mailData = {
+        from: 'ssupport@student.neumont.edu',
+        to: `${ticketQueries.emailQuery}`,
+        subject: 'Laptop Repaired',
+        text: 'Your Laptop has been repaired',
+        html: `<b>Hey ${userQueries.nameQuery},</b>
+                <br>Your laptop has been repaired, please come by and get your laptop at your earliest convenience</br>
+                <br></br>
+                <br>Thanks,</br>
+                <br>Student Support</br>`
+    };
+
+    transporter.sendMail(mailData, (error, info) => {
+        if (error) {
+            return console.log(error);
+        }
+        res.status(200).send({ message: "Mail sent", message_id: info.messageId });
+    });
+});
 
 app.get('/api/users', userQueries.getUser);
 app.post('/api/users', userQueries.createUser);
@@ -86,5 +97,6 @@ app.put('/api/tickets/:id', ticketQueries.updateTicket);
 app.delete('/api/tickets/:id', ticketQueries.deleteTicket);
 
 app.listen(process.env.port || 3000, () => {
+    // onStart();
     console.log(`Express listening on ${process.env.port}`);
 });

@@ -77,10 +77,22 @@ const deleteUser = (request, response) => {
     });
 };
 
+const nameQuery = (req, res) => {
+    const id = parseInt(req.params.id);
+
+    pool.query(`SELECT name FROM users WHERE id=$1`,[id],(err,result)=>{
+        if(err){
+            console.log(err);
+        }
+        res.status(200).send('we got the name');
+    });
+};
+
 module.exports = {
     createUser,
     updateUser,
     deleteUser,
     getUserById,
-    getUser
+    getUser,
+    nameQuery
 };
