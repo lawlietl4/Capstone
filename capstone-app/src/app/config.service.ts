@@ -1,32 +1,27 @@
+// Angular Modules 
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
-import { Ticket } from './ticket';
-
-
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ConfigService {
-  configUrl = '_assets/config.json';
-  tickets!: Observable<Ticket[]>;
+  private readonly API_server = 'http://localhost:3000'; //API host endpoint
 
-  constructor(private http: HttpClient) { }
-  getTickets() {
-    this.tickets = this.http.get<Ticket[]>('/api/tickets');
-    return this.tickets;
+  constructor(private http: HttpClient) {
+    this.getTickets;
+    this.postTickets;
+    this.putTickets;
+    this.deleteTickets;
+  }//default constructor
+
+  public getTickets() {
+    return this.http.get(this.API_server + '/api/tickets');
   }
-  putTickets(input: string) {
-    this.tickets = this.http.put<Ticket[]>(`/api/tickets/${ticket.id}`, input);
-    return this.tickets;
+  public postTickets(options?: any) {
+    return this.http.post(this.API_server + '/api/tickets/:id', options);
   }
-  postTickets(input: string){
-    this.tickets = this.http.post<Ticket[]>('/api/tickets',input);
-    return this.tickets;
+  public putTickets(options?: any) {
+    return this.http.put(this.API_server + '/api/tickets', options);
   }
-  deleteTickets(ticket: string){
-    this.tickets = this.http.delete<Ticket[]>(`/api/tickets/${ticket}`);
-    return this.tickets;
+  public deleteTickets() {
+    return this.http.delete(this.API_server + '/api/tickets/:id');
   }
 }
