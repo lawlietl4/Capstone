@@ -74,10 +74,10 @@ const deleteTicket = (request, response) => {
     });
 };
 
-const emailQuery = (req,res)=>{
+const emailQuery = (req,response)=>{
     const id = parseInt(req.params.id);
 
-    pool.query(`SELECT email FROM ${process.env.ticket_table} WHERE id=$1`, [id], (err, res)=>{
+    pool.query(`SELECT email FROM ${process.env.ticket_table} WHERE id=$1`, [id], (err, results)=>{
         if(err){
             console.log(err);
         }

@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
         user: process.env.username,
         pass: process.env.email_password
     },
-    secure: true
+    secure: true 
 });
 
 const pool = new Pool({
@@ -46,11 +46,13 @@ const onStart = (req, res) => {
                   references users ( "name" )
              , constraint user_email_fk
                   foreign key ( "email" )
-                  references users ( "email" ));`, (err, result) => {
+                  references users ( "email" ));
+        INSERT INTO users(name,email)VALUES('Nick Roberson','niroberson@student.neumont.edu');
+        INSERT INTO tickets(userName,email,loaner,comments)VALUES('Nick Roberson','niroberson@student.neumont.edu','12452','dropped laptop while walking to class')`, (err, result) => {
             if (err) {
                 console.log(err);
             }
-            console.log(result.rows);
+            // console.log(result.rows);
         });
     } catch (err) {
         console.log(err);
@@ -61,11 +63,11 @@ const onStart = (req, res) => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// app.get('/', onStart);
+app.get('/', onStart);
 // app.get('/api', listAll);
 app.post('/api/send-mail', (req, res) => {
     const mailData = {
-        from: 'ssupport@student.neumont.edu',
+        from: `${process.env.username}`,
         to: `${ticketQueries.emailQuery}`,
         subject: 'Laptop Repaired',
         text: 'Your Laptop has been repaired',
@@ -82,6 +84,7 @@ app.post('/api/send-mail', (req, res) => {
         }
         res.status(200).send({ message: "Mail sent", message_id: info.messageId });
     });
+    console.log(ticketQueries.emailQuery);
 });
 
 app.get('/api/users', userQueries.getUser);
