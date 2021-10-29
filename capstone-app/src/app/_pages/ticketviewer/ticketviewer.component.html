@@ -1,38 +1,44 @@
 <p *ngIf='tickets.isEmpty|async'>Tickets are empty</p>
 <legend>Tickets open</legend>
 <div id='ticketsTable'>
-    <table>
+    <table class="table">
         <thead>
             <tr>
-                <th class="col-xs-6 col-form-label" id="ticketID">Ticket ID</th>
-                <th class="col-sx-6 col-form-lable" id="Title">Title</th>
-                <th class="col-xs-6 col-form-label" id="UserName">Name</th>
-                <th class="col-xs-6 col-form-label" id="EMail">Email</th>
-                <th class="col-xs-6 col-form-label" id="Loaner">Loaner</th>
+                <th scope="col" id="ticketID">Ticket ID</th>
+                <th class="col" id="Title">Title</th>
+                <th class="col" id="UserName">Name</th>
+                <th class="col" id="EMail">Email</th>
+                <th class="col" id="contacted">Contacted</th>
+                <th class="col" id="Loaner">Loaner</th>
+                <th class="col" id="ViewTicket">View</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor='let ticket of tickets|async'>
-                <a [routerLink]="['/ticket-viewer',ticket.id]" fragment="info">
-                    <td class="form-group row" id='id'>
+                    <th scope="row" class="table-row" id='id'>
                         <!-- GUID -->
-                        <div class="col-xs-6">{{ ticket.id }}</div>
-                    </td>
-                    <td class="form-group row" id='nameRow'>
+                        <div>{{ ticket.id }}</div>
+                    </th>
+                    <td class="table-row" id='titleCol'>
                         <!-- ticket title -->
-                        <div class="col-xs-6">{{ ticket.title }}</div>
+                        <div>{{ ticket.title }}</div>
                     </td>
-                    <td class="form-group row" id='nameRow'>
+                    <td class="form-group row" id='nameCol'>
                         <!-- name -->
-                        <div class="col-xs-6">{{ ticket.userName }}</div>
+                        <div>{{ ticket.requester }}</div>
                     </td>
-                    <td class="form-group row" id='emailRow'>
+                    <td class="form-group row" id='emailCol'>
                         <!-- EMail -->
-                        <div class="col-xs-6">{{ ticket.email }}</div>
+                        <div>{{ ticket.email }}</div>
                     </td>
-                    <td class="form-group row" id='loanerRow'>
+                    <td class="form-group row" id='loanerCol'>
                         <!-- Loaner ID -->
-                        <div class="col-xs-6">{{ ticket.loaner }}</div>
+                        <div>{{ ticket.loaner }}</div>
+                    </td>
+                    <td></td>
+                <a [routerLink]="['/ticket-viewer',ticket.id]" fragment="info">
+                    <td>
+                        View ticket
                     </td>
                 </a>
             </tr>
