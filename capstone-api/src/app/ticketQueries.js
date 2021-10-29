@@ -14,7 +14,7 @@ const pool = new Pool({
 });
 
 const getTicket = (req, res) => {
-    pool.query(`SELECT * FROM ${process.env.ticket_table} ORDER BY id ASC`, (err, results) => {
+    pool.query(`SELECT * FROM ${process.env.ticket_table} ORDER BY id DESC`, (err, results) => {
         if (err) {
             throw err;
         } else {
