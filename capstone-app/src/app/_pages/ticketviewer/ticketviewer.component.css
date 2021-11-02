@@ -1,8 +1,12 @@
 table {
   width: 90%;
 }
+table a{
+  justify-content: center;
+}
 #ticketsTable {
   display: table-header-group;
+  align-items: center;
   justify-content: center;
   white-space: nowrap;
 }

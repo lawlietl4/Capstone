@@ -1,9 +1,10 @@
 export interface Ticket {
-    id: number,
-    requester: string,
-    helper: string,
-    title: string,
-    email: string,
-    loaner: string,
-    comments: string
+    id: string|null,
+    requester: string|null,
+    helper: string|null,
+    title: string|null,
+    email: string|null,
+    loanerid: string|null,
+    comments: string|null,
+    lastcontacted: string|null
 }

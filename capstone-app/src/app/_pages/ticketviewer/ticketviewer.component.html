@@ -35,12 +35,14 @@
                         <!-- EMail -->
                         <div>{{ ticket.email }}</div>
                     </td>
+                    <td class="form-group row" id="contactedCol">
+                        <div>{{ ticket.contacted }}</div>
+                    </td>
                     <td class="form-group row" id='loanerCol'>
                         <!-- Loaner ID -->
-                        <div>{{ ticket.loaner }}</div>
+                        <div>{{ ticket.loanerid }}</div>
                     </td>
-                    <td></td>
-                <a [routerLink]="['/ticket-viewer',ticket.id]" fragment="info">
+                <a [routerLink]="['/ticket-viewer',ticket.id]">
                     <td>
                         View ticket
                     </td>
