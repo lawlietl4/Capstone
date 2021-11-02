@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfigService } from '../../config.service';
-import { Router,ActivatedRoute,ParamMap } from '@angular/router';
-import { Ticket } from 'src/app/ticket';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-ticket-info',
@@ -9,26 +8,40 @@ import { Ticket } from 'src/app/ticket';
   styleUrls: ['./ticket-info.component.css']
 })
 export class TicketInfoComponent implements OnInit {
-  ticket: any;
   id: any;
-  requester:any;
+  ticket: any;
+  name: any;
+  requester: any;
+  info: any;
+  title: any;
+  loaner: any;
+  lastContacted: any;
+  helper: any;
+  email: any;
 
   constructor(
-    private service: ConfigService, 
-    private route: ActivatedRoute,
-    private router: Router) {
+    private service: ConfigService,
+    private route: ActivatedRoute) {
 
     // this.ticket = ticket;
   }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      this.ticket=(params.get('id'));
-      this.id = (this.service.getTicketById(this.ticket));
-      
-      console.log(this.id);
-      console.log(params);
+      this.id = (params.get('id'));
+      this.service.getTicketById(this.id).subscribe(res => {
+        this.ticket = res;
+        this.requester = this.ticket[0]['requester'];
+        this.title = this.ticket[0]['title'];
+        this.info = this.ticket[0]['description'];
+        this.loaner = this.ticket[0]['loanerid'];
+        this.lastContacted = this.ticket[0]['lastcontacted'];
+        this.helper = this.ticket[0]['helper'];
+        this.email = this.ticket[0]['email'];
+      });
     });
   }
-
+  emailUser(): void {
+    
+  }
 }

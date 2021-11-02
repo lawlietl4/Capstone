@@ -1,15 +1,15 @@
 <p *ngIf='tickets.isEmpty|async'>Tickets are empty</p>
 <legend>Tickets open</legend>
 <div id='ticketsTable'>
-    <table class="table">
+    <table class="table table-striped table-bordered table-hover">
         <thead>
             <tr>
                 <th scope="col" id="ticketID">Ticket ID</th>
-                <th class="col-xs-6" id="Title">Title</th>
                 <th class="col-xs-6" id="helper">Helper</th>
                 <th class="col-xs-6" id="UserName">Name</th>
                 <th class="col-xs-6" id="EMail">Email</th>
                 <th class="col-xs-6" id="contacted">Contacted</th>
+                <th class="col-xs-6" id="closed">Closed</th>
                 <th class="col-xs-6" id="Loaner">Loaner</th>
                 <th class="col-xs-6" id="ViewTicket">View</th>
             </tr>
@@ -20,10 +20,6 @@
                         <!-- GUID -->
                         <div>{{ ticket.id }}</div>
                     </th>
-                    <td class="table-row" id='titleCol'>
-                        <!-- ticket title -->
-                        <div>{{ ticket.title }}</div>
-                    </td>
                     <td scope="row" class="table-row" id='helper'>
                         <div>{{ ticket.helper }}</div>
                     </td>
@@ -36,7 +32,12 @@
                         <div>{{ ticket.email }}</div>
                     </td>
                     <td class="form-group row" id="contactedCol">
+                        <!-- Contacted or not-->
                         <div>{{ ticket.contacted }}</div>
+                    </td>
+                    <td class="form-group row" id='closedCol'>
+                        <!-- Whether ticket has been closed-->
+                        <div>{{ ticket.closed }}</div>
                     </td>
                     <td class="form-group row" id='loanerCol'>
                         <!-- Loaner ID -->

@@ -13,16 +13,24 @@ export class ConfigService {
   public getTickets() {
     return this.http.get(this.API_server + '/api/tickets');
   }
+  
   public getTicketById(id: string|null){
     return this.http.get(this.API_server + '/api/tickets/' + id)
   }
+
   public postTickets(options?: any) {
     return this.http.post(this.API_server + '/api/tickets/:id', options);
   }
+
   public putTickets(options?: any) {
     return this.http.put(this.API_server + '/api/tickets', options);
   }
+
   public deleteTickets() {
     return this.http.delete(this.API_server + '/api/tickets/:id');
+  }
+
+  public sendEmail(){
+    return this.http.post(this.API_server + '/api/send-email','');
   }
 }
