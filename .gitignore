@@ -1,10 +1,14 @@
-capstone-api/node_modules
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
 capstone-app/dist
 capstone-app/tmp
 capstone-app/out-tsc
+capstone-app/.sass-cache
+capstone-app/connect.lock
+capstone-app/coverage
+capsotne-app/libpeerconnection.log
+capstone-app/package-lock.json
 # Only exists if Bazel was run
 capstone-app/bazel-out
 
@@ -34,10 +38,6 @@ capstone-app/.idea
 .history/*
 
 # misc
-capstone-app/.sass-cache
-capstone-app/connect.lock
-capstone-app/coverage
-capsotne-app/libpeerconnection.log
 npm-debug.log
 yarn-error.log
 testem.log
