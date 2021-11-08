@@ -7,6 +7,10 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
   styleUrls: ['./ticket-editor.component.css']
 })
 export class TicketEditorComponent implements OnInit {
+  requester: string = '';
+  description: string = '';
+  loaner: number = 11111;
+
   submitted = false;
   registered = false;
   userForm!: FormGroup;
@@ -51,6 +55,9 @@ export class TicketEditorComponent implements OnInit {
     }
     else {
       this.registered = true;
+      this.requester = this.userForm.value.first_name + ' ' + this.userForm.value.last_name;
+      this.description = this.userForm.value.description;
+      console.log(this.requester);
     }
   }
 }
