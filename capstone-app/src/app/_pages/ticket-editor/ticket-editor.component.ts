@@ -7,6 +7,11 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
   styleUrls: ['./ticket-editor.component.css']
 })
 export class TicketEditorComponent implements OnInit {
+  requester: string = '';
+  description: string = '';
+  loaner: number = 11111;
+  email: string = '';
+  title: string = '';
   submitted = false;
   registered = false;
   userForm!: FormGroup;
@@ -20,6 +25,7 @@ export class TicketEditorComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       loaner: ['', [Validators.required, Validators.pattern('^[0-9]{5}(?:-[0-9]{4})?$')]],
       description: ['', Validators.required],
+      title: ['', Validators.required]
     });
   }
 
@@ -43,14 +49,35 @@ export class TicketEditorComponent implements OnInit {
     return (this.submitted && this.userForm.controls.description.invalid);
   }
 
+  invalidTitle(){
+    return (this.submitted && this.userForm.controls.title.invalid);
+  }
+
   onSubmit() {
     this.submitted = true;
-    console.log(this.userForm.value);
+    // console.log(this.userForm.value);
     if (this.userForm.invalid == true) {
       return;
     }
     else {
       this.registered = true;
+      this.requester = this.userForm.value['first_name'] + ' ' + this.userForm.value['last_name'];
+      this.email = this.userForm.value['email'];
+      this.loaner = this.userForm.value['loaner'];
+      this.description = this.userForm.value['description'];
+      this.title = this.userForm.value['title'];
+      fetch('http://localhost:3000/api/tickets', 
+      { 
+        method: 'POST', 
+        headers:{'Content-Type': 'application/json'}, 
+        body: JSON.stringify({
+          'requester': this.requester,
+          'email': this.email,
+          'loanerid': this.loaner,
+          'description': this.description,
+          'title': this.title
+        })
+      });
     }
   }
 }

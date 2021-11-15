@@ -10,8 +10,9 @@ export class StudentAdderComponent implements OnInit {
   submitted = false;
   registered = false;
   userForm!: FormGroup;
-  serialNo='';
-  email='';
+  serialNo: string = '';
+  email: string = '';
+  name: string = '';
   constructor(private formBuilder: FormBuilder) {
   }
 
@@ -23,15 +24,13 @@ export class StudentAdderComponent implements OnInit {
       serial: ['', [Validators.required, Validators.pattern('[rR]{1}[9][0|1][a-zA-Z0-9]{5}')]],
     });
   }
-  masterValidator(){
-    
-  }
+
   invalidFirstName() {
-    return (this.submitted && this.userForm.controls.first_name.errors != null);
+    return (this.submitted && this.userForm.controls.first_name.invalid);
   }
 
   invalidLastName() {
-    return (this.submitted && this.userForm.controls.last_name.errors != null);
+    return (this.submitted && this.userForm.controls.last_name.invalid);
   }
 
   invalidEmail() {
@@ -53,8 +52,20 @@ export class StudentAdderComponent implements OnInit {
     }
     else {
       this.registered = true;
-      console.log(this.userForm.value);
+      this.name = this.userForm.value['first_name'] + ' ' + this.userForm.value['last_name'];
+      this.email = this.userForm.value['email'];
+      this.serialNo = this.userForm.value['serial'];
+      // console.log(this.name,this.email,this.serialNo);
+      fetch('http://localhost:3000/api/users',
+      {
+          method: 'POST',
+          headers: { 'Content-type': 'application/json' },
+          body: JSON.stringify({
+            'name': this.name,
+            'email': this.email,
+            'serialNo': this.serialNo
+          })
+      });
     }
   }
-
 }

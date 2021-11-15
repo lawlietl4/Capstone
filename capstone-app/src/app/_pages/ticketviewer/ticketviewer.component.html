@@ -16,33 +16,33 @@
         </thead>
         <tbody>
             <tr *ngFor='let ticket of tickets|async'>
-                    <th scope="row" class="table-row" id='id'>
-                        <!-- GUID -->
-                        <div>{{ ticket.id }}</div>
-                    </th>
-                    <td scope="row" class="table-row" id='helper'>
-                        <div>{{ ticket.helper }}</div>
-                    </td>
-                    <td class="form-group row" id='nameCol'>
-                        <!-- name -->
-                        <div>{{ ticket.requester }}</div>
-                    </td>
-                    <td class="form-group row" id='emailCol'>
-                        <!-- EMail -->
-                        <div>{{ ticket.email }}</div>
-                    </td>
-                    <td class="form-group row" id="contactedCol">
-                        <!-- Contacted or not-->
-                        <div>{{ ticket.contacted }}</div>
-                    </td>
-                    <td class="form-group row" id='closedCol'>
-                        <!-- Whether ticket has been closed-->
-                        <div>{{ ticket.closed }}</div>
-                    </td>
-                    <td class="form-group row" id='loanerCol'>
-                        <!-- Loaner ID -->
-                        <div>{{ ticket.loanerid }}</div>
-                    </td>
+                <th scope="row" class="table-row" id='id'>
+                    <!-- GUID -->
+                    <div>{{ ticket.id }}</div>
+                </th>
+                <td scope="row" class="table-row" id='helper'>
+                    <div>{{ ticket.helper }}</div>
+                </td>
+                <td class="form-group row" id='nameCol'>
+                    <!-- name -->
+                    <div>{{ ticket.requester }}</div>
+                </td>
+                <td class="form-group row" id='emailCol'>
+                    <!-- EMail -->
+                    <div>{{ ticket.email }}</div>
+                </td>
+                <td class="form-group row" id="contactedCol">
+                    <!-- Contacted or not-->
+                    <div>{{ ticket.contacted }}</div>
+                </td>
+                <td class="form-group row" id='closedCol'>
+                    <!-- Whether ticket has been closed-->
+                    <div>{{ ticket.closed }}</div>
+                </td>
+                <td class="form-group row" id='loanerCol'>
+                    <!-- Loaner ID -->
+                    <div>{{ ticket.loanerid }}</div>
+                </td>
                 <a [routerLink]="['/ticket-viewer',ticket.id]">
                     <td>
                         View ticket

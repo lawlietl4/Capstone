@@ -7,9 +7,7 @@ import { pages } from './pages';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'capstone-app';
+  title = 'ticketing-server';
   pages = pages;
-  click(){
-    window.alert("You clicked me!");
-  }
+  
 };

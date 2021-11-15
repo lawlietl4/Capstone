@@ -20,10 +20,11 @@
     <div class="form-group" [ngClass]="{ 'has-error': invalidEmail() }">
         <!-- Email -->
         <label for="email" class="control-label">E-mail</label>
-        <input [(ngModel)]="email" #name="" type="text" formControlName="email" class="form-control" id="email" name="email"
+        <input [(ngModel)]="email" type="text" formControlName="email" class="form-control" id="email" name="email"
             placeholder="example@student.neumont.edu" required minlength="3">
         <p *ngIf="invalidEmail()" id="email_error" class="help-block">Invalid email address.</p>
     </div>
+    
     <div class="form-group" [ngClass]="{ 'has-error': invalidSerial() }">
         <!-- Serial Number from laptop-->
         <label for="serial" class="contorl-label">Serial Number</label>

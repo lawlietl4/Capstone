@@ -5,7 +5,7 @@
         <!-- First Name -->
         <label for="first_name" class="control-label">First Name</label>
         <input type="text" formControlName="first_name" class="form-control" id="first_name" name="first_name"
-            placeholder="Martin">
+            placeholder="John">
         <p *ngIf="invalidFirstName()" id="first_name_error" class="help-block">Invalid first name.</p>
     </div>
 
@@ -13,7 +13,7 @@
         <!-- Last Name -->
         <label for="last_name" class="control-label">Last Name</label>
         <input type="text" formControlName="last_name" class="form-control" id="last_name" name="last_name"
-            placeholder="Toha">
+            placeholder="Doe">
         <p *ngIf="invalidLastName()" id="last_name_error" class="help-block">Invalid last name.</p>
     </div>
 
@@ -21,7 +21,7 @@
         <!-- Email -->
         <label for="email" class="control-label">E-mail</label>
         <input type="text" formControlName="email" class="form-control" id="email" name="email"
-            placeholder="your@email.com">
+            placeholder="jdoe@student.neumont.edu">
         <p *ngIf="invalidEmail()" id="email_error" class="help-block">Invalid email address.</p>
     </div>
 
@@ -31,6 +31,14 @@
         <input type="text" formControlName="loaner" class="form-control" id="loaner" name="loaner" placeholder="#####">
         <p *ngIf="invalidLoaner()" id="loaner_error" class="help-block">Invalid loaner ID.</p>
     </div>
+
+    <div>
+        <!-- ticket title -->
+        <label for='title' class='control-label'>Title</label>
+        <input type='text' formControlName='title' class='form-control' id='title' name='title' placeholder="Title">
+        <p *ngIf='invalidTitle()' id='title_error' class="help-block">Invalid Title</p>
+    </div>
+
     <div class="form-group" [ngClass]="{ 'has-error': emptyDescription() }">
         <!-- Description -->
         <label for="description" class="control-label">Description</label>
@@ -38,6 +46,7 @@
             placeholder="Explain what happened" rows="5"></textarea>
         <p *ngIf="emptyDescription()" id="description_error" class="help-block">Description cannot be empty.</p>
     </div>
+    
     <div class="form-group has-error">
         <!-- Submit Button -->
         <button type="submit" class="btn btn-primary">Submit</button>

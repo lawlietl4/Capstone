@@ -8,14 +8,14 @@ import { ConfigService } from '../../config.service';
 })
 
 export class TicketViewerComponent implements OnInit {
-  tickets:any;
+  tickets: any;
 
-  constructor(service: ConfigService) { 
+  constructor(service: ConfigService) {
     const tickets = service.getTickets();
-    this.tickets=tickets;
+    this.tickets = tickets;
   }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     return this.tickets;
   }
 }
