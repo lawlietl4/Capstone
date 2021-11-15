@@ -35,9 +35,9 @@ const getTicketById = (request, response) => {
 };
 
 const createTicket = (request, response) => {
-    const { name, email, loaner, comments } = request.body;
+    const { requester, email, loanerid, description, closed } = request.body;
     // console.log(request.body);
-    pool.query(`INSERT INTO ${process.env.ticket_table} (name, email,loaner,comments) VALUES ($1, $2)`, [name, email, loaner, comments], (error, results) => {
+    pool.query(`INSERT INTO ${process.env.ticket_table} (requester, email, loanerid, description, closed) VALUES ($1, $2, $3, $4, $5)`, [requester, email, loanerid, description, closed], (error, results) => {
         if (error) {
             throw error;
         } else {
@@ -70,15 +70,15 @@ const deleteTicket = (request, response) => {
         if (error) {
             throw error;
         }
-        response.status(200).send(`User deleted with ID: ${id}`);
+        response.status(200).send(`Ticket deleted with ID: ${id}`);
     });
 };
 
-const emailQuery = (req,response)=>{
+const emailQuery = (req, response) => {
     const id = parseInt(req.params.id);
 
-    pool.query(`SELECT email FROM ${process.env.ticket_table} WHERE id=$1`, [id], (err, results)=>{
-        if(err){
+    pool.query(`SELECT email FROM ${process.env.ticket_table} WHERE id=$1`, [id], (err, results) => {
+        if (err) {
             console.log(err);
         }
         response.status(200).send(`user email pulled with id: ${id}`);

@@ -34,13 +34,10 @@ export class StudentAdderComponent implements OnInit {
   }
 
   invalidEmail() {
-    // console.log(!this.userForm.controls.email.invalid);
-    // console.log(this.submitted);
     return (this.submitted && (this.userForm.controls.email.invalid));
   }
 
   invalidSerial() {
-    // console.log(this.userForm.controls.serial.invalid);
     return (this.submitted && this.userForm.controls.serial.invalid);
   }
 
@@ -63,7 +60,7 @@ export class StudentAdderComponent implements OnInit {
           body: JSON.stringify({
             'name': this.name,
             'email': this.email,
-            'serialNo': this.serialNo
+            "serialNo": this.serialNo
           })
       });
     }

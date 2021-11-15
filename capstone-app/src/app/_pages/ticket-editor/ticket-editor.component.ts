@@ -75,12 +75,10 @@ export class TicketEditorComponent implements OnInit {
           'email': this.email,
           'loanerid': this.loaner,
           'description': this.description,
-          'title': this.title
+          'title': this.title,
+          'closed': 0
         })
       });
-      this.requester = this.userForm.value.first_name + ' ' + this.userForm.value.last_name;
-      this.description = this.userForm.value.description;
-      console.log(this.requester);
     }
   }
 }

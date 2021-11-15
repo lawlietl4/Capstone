@@ -58,9 +58,9 @@ const getUserById = (request, response) => {
 };
 
 const createUser = (request, response) => {
-    const { name, email, serialno } = request.body;
+    const { name, email, serialNo } = request.body;
     // console.log(request.body);
-    pool.query(`INSERT INTO ${process.env.user_table} (name, email, serialno) VALUES ($1, $2, $3)`, [name, email, serialno], (error, results) => {
+    pool.query(`INSERT INTO ${process.env.user_table} (name, email, "serialNo") VALUES ($1, $2, $3)`, [name, email, serialNo], (error, results) => {
         if (error) {
             throw error;
         } else {
