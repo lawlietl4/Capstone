@@ -10,8 +10,12 @@ export class TicketEditorComponent implements OnInit {
   requester: string = '';
   description: string = '';
   loaner: number = 11111;
+<<<<<<< HEAD
   email: string = '';
   title: string = '';
+=======
+
+>>>>>>> a3f4ae024aa5d84c15d0e7623bc703f308efc662
   submitted = false;
   registered = false;
   userForm!: FormGroup;
@@ -61,6 +65,7 @@ export class TicketEditorComponent implements OnInit {
     }
     else {
       this.registered = true;
+<<<<<<< HEAD
       this.requester = this.userForm.value['first_name'] + ' ' + this.userForm.value['last_name'];
       this.email = this.userForm.value['email'];
       this.loaner = this.userForm.value['loaner'];
@@ -78,6 +83,11 @@ export class TicketEditorComponent implements OnInit {
           'title': this.title
         })
       });
+=======
+      this.requester = this.userForm.value.first_name + ' ' + this.userForm.value.last_name;
+      this.description = this.userForm.value.description;
+      console.log(this.requester);
+>>>>>>> a3f4ae024aa5d84c15d0e7623bc703f308efc662
     }
   }
 }
