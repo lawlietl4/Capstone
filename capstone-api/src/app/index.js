@@ -5,7 +5,7 @@ const userQueries = require('./userQueries');
 const ticketQueries = require('./ticketQueries');
 const cors = require('cors');
 
-app.use(cors());
+app.use(cors({ origin: 'http://localhost:3000' }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -21,6 +21,9 @@ app.post('/api/tickets', ticketQueries.createTicket);
 app.get('/api/tickets/:id', ticketQueries.getTicketById);
 app.put('/api/tickets/:id', ticketQueries.updateTicket);
 app.delete('/api/tickets/:id', ticketQueries.deleteTicket);
+
+app.post('/api/auth/signup', authQueries.signup);
+app.post('/api/auth/login', authQueries.login);
 
 app.post("api/send-email", (req, res) => {
     console.log("request came");
