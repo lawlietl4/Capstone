@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfigService } from '../../config.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-ticket-info',
@@ -21,7 +22,8 @@ export class TicketInfoComponent implements OnInit {
 
   constructor(
     private service: ConfigService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private titleService: Title) {
 
     // this.ticket = ticket;
   }
@@ -29,6 +31,7 @@ export class TicketInfoComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.id = (params.get('id'));
+      this.titleService.setTitle(`Ticket Info: ${params.get('id')}`);
       this.service.getTicketById(this.id).subscribe(res => {
         this.ticket = res;
         this.requester = this.ticket[0]['requester'];
