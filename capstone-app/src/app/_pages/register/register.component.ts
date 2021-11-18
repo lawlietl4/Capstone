@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthorizationService } from 'src/app/_auth/authorization.service';
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-register',
@@ -7,34 +7,29 @@ import { AuthorizationService } from 'src/app/_auth/authorization.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  form: any = {
-    username: null,
-    email: null,
-    password: null
-  };
+  userForm!: FormGroup;
+  submitted: boolean = false;
 
-  isSuccessful = false;
-  signupFailed = false;
-  errorMsg = '';
-
-  constructor(private authService: AuthorizationService) { }
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.userForm = this.formBuilder.group({
+      first_name: ['', Validators.required],
+      last_name: ['', Validators.required],
+      username: ['', [Validators.required, Validators.minLength, Validators.maxLength]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength, Validators.maxLength]]
+    });
   }
 
-  onSubmit(): void {
-    const { username, password } = this.form;
-
-    this.authService.register(username, password).subscribe(
-      data => {
-        // console.log(data);
-        this.isSuccessful = true;
-        this.signupFailed = false;
-      },
-      err => {
-        this.errorMsg = err.error.message;
-        this.signupFailed = true;
-      }
-    );
+  onSubmit() {
+    this.submitted = true;
+    // console.log(this.userForm.value);
+    if (this.userForm.invalid == true) {
+      return;
+    }
+    else {
+      
+    }
   }
 }

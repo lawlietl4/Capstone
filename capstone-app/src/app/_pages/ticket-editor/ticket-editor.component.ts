@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { GlobalConstants } from 'src/app/global-constants';
 
 @Component({
   selector: 'app-ticket-editor',
@@ -15,6 +16,7 @@ export class TicketEditorComponent implements OnInit {
   submitted = false;
   registered = false;
   userForm!: FormGroup;
+  helper: string = GlobalConstants.helper;
 
   constructor(private formBuilder: FormBuilder) { }
 
@@ -24,6 +26,7 @@ export class TicketEditorComponent implements OnInit {
       last_name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       loaner: ['', [Validators.required, Validators.pattern('^[0-9]{5}(?:-[0-9]{4})?$')]],
+      helper: [this.helper, [Validators.required]],
       description: ['', Validators.required],
       title: ['', Validators.required]
     });
@@ -53,6 +56,10 @@ export class TicketEditorComponent implements OnInit {
     return (this.submitted && this.userForm.controls.title.invalid);
   }
 
+  invalidHelper(){
+    return (this.submitted && this.userForm.controls.helper.invalid);
+  }
+
   onSubmit() {
     this.submitted = true;
     // console.log(this.userForm.value);
@@ -66,6 +73,7 @@ export class TicketEditorComponent implements OnInit {
       this.loaner = this.userForm.value['loaner'];
       this.description = this.userForm.value['description'];
       this.title = this.userForm.value['title'];
+      this.helper = this.userForm.value['helper'];
       fetch('http://localhost:3000/api/tickets', 
       { 
         method: 'POST', 
@@ -76,7 +84,8 @@ export class TicketEditorComponent implements OnInit {
           'loanerid': this.loaner,
           'description': this.description,
           'title': this.title,
-          'closed': 0
+          'closed': 0,
+          'helper': this.helper
         })
       });
     }
