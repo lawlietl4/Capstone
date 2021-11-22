@@ -19,8 +19,7 @@ import { AssetLookupComponent } from './_pages/asset-lookup/asset-lookup.compone
 import { LoaningTabComponent } from './_pages/loaning-tab/loaning-tab.component';
 import { TicketInfoComponent } from './_pages/ticket-info/ticket-info.component';
 import { RegisterComponent } from './_pages/register/register.component';
-// authorization forms
-import { authInterceptorProviders } from './_auth/auth.interceptor';
+import { LoginComponentComponent } from './_auth/login-component/login-component.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +36,7 @@ import { authInterceptorProviders } from './_auth/auth.interceptor';
     LoaningTabComponent,
     TicketInfoComponent,
     RegisterComponent,
+    LoginComponentComponent,
   ],
   imports: [
     BrowserModule,

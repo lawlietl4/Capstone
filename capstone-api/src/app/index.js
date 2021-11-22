@@ -1,10 +1,16 @@
 require('dotenv').config();
+const fs = require('fs');
 const express = require('express');
 const app = express();
 const userQueries = require('./userQueries');
 const ticketQueries = require('./ticketQueries');
 const authQueries = require('./authQueries');
 const cors = require('cors');
+const expressJwt = require('express-jwt');
+const RSA_PUBLIC_KEY = fs.readFileSync('../keys/public.key');
+const checkIfAuthenticated = expressJwt({
+    secret: RSA_PUBLIC_KEY
+});
 
 app.use(cors({ }));
 app.use(express.json());
@@ -23,7 +29,7 @@ app.get('/api/tickets/:id', ticketQueries.getTicketById);
 app.put('/api/tickets/:id', ticketQueries.updateTicket);
 app.delete('/api/tickets/:id', ticketQueries.deleteTicket);
 
-app.post('/api/auth/login', authQueries.login);
+app.post('/api/auth/login', authQueries.login).get(checkIfAuthenticated, readAllUsers);
 // app.post('/api/auth/signup', authQueries.signup);
 
 app.post("api/send-email", (req, res) => {

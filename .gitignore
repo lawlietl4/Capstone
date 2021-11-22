@@ -46,3 +46,6 @@ capstone-app/typings
 # System Files
 .DS_Store
 Thumbs.db
+
+# sensitive keys
+capstone-api/src/keys
