@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { GlobalConstants } from 'src/app/global-constants';
-import { Title } from '@angular/platform-browser';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/_auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,25 +9,24 @@ import { Title } from '@angular/platform-browser';
   styleUrls: [ './login.component.css' ]
 })
 export class LoginComponent implements OnInit{
-  constructor(private formBuilder: FormBuilder, private titleService: Title){ }
-  userForm!: FormGroup
-  loginSucceeded: boolean = false;
-  helper: string = GlobalConstants.helper;
-  AUTH_API: string = 'http://localhost:3000/api/auth';
-
-  ngOnInit(): void {
-    this.titleService.setTitle('Login');
-    this.userForm = this.formBuilder.group({
-      username: ['', [Validators.required, Validators.minLength, Validators.maxLength]],
-      password: ['', [Validators.required, Validators.minLength, Validators.maxLength]]
-    });
+  loginForm: FormGroup;
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
+    this.loginForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    })
   }
+  ngOnInit(): void {}
+  login(): void {
+    const value = this.loginForm.value;
 
-  onSubmit(): void {
-    if (this.loginSucceeded){
-      this.helper = JSON.stringify(fetch(this.AUTH_API));
-    } else {
-
+    console.log("User logged in");
+    if (value.username && value.password) {
+      this.authService.login(value.username, value.password)
+      .subscribe(() => {
+        this.router.navigateByUrl('/');
+      });
     }
   }
+
 }

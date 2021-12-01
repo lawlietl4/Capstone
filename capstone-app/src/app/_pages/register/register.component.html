@@ -1,0 +1,30 @@
+<div>
+  <form [formGroup]="userForm">
+    <fieldset>
+      <legend>Register</legend>
+      <div class="form-field">
+          <label>First Name: </label>
+          <input name='fname' formControlName='first_name' />
+      </div>
+      <div class="form-field">
+          <label>Last Name: </label>
+          <input name='lname' formControlName='last_name' />
+      </div>
+      <div class="form-field">
+        <label>Username: </label>
+        <input name="username" formControlName="username" />
+      </div>
+      <div class="form-field">
+        <label>Password: </label>
+        <input name="password" formControlName="password" type="password" />
+      </div>
+      <div>
+          <label>Email: </label>
+          <input name='email' formControlName='email' />
+      </div>
+    </fieldset>
+    <div class="form-buttons">
+      <button class="button button-primary" (click)="onSubmit()">Login</button>
+    </div>
+  </form>
+</div>

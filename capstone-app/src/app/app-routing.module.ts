@@ -13,6 +13,7 @@ import { AssetEditorComponent } from './_pages/asset-editor/asset-editor.compone
 import { AssetLookupComponent } from './_pages/asset-lookup/asset-lookup.component';
 import { LoaningTabComponent } from './_pages/loaning-tab/loaning-tab.component';
 import { TicketInfoComponent } from './_pages/ticket-info/ticket-info.component';
+import { RegisterComponent } from './_pages/register/register.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/ticket-viewer', pathMatch: 'full' },
@@ -23,7 +24,8 @@ const routes: Routes = [
     ]
   },
   { path: 'ticket-editor', component: TicketEditorComponent },
-  /*{ path: 'login', component: LoginComponent },*/
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent},
   // { path: 'ticket-viewer/:id', component: TicketInfoComponent },
   { path: 'student-adder', component: StudentAdderComponent },
   { path: 'asset-viewer', component: AssetViewerComponent },
