@@ -9,5 +9,10 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(username: string, password: string) {
+
+  }
+
+  register(username: string, name: string, password: string){
+
   }
 }
