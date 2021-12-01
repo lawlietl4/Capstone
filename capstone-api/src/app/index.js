@@ -24,7 +24,8 @@ app.get('/api/tickets/:id', ticketQueries.getTicketById);
 app.put('/api/tickets/:id', ticketQueries.updateTicket);
 app.delete('/api/tickets/:id', ticketQueries.deleteTicket);
 
-// app.post('/api/auth/signup', authQueries.signup);
+app.post('/api/auth/signup', authQueries.register);
+app.post('/api/auth/login', authQueries.login);
 
 app.post("api/send-email", (req, res) => {
     console.log("request came");
