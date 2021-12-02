@@ -2,7 +2,7 @@ require('dotenv').config();
 const Pool = require('pg').Pool;
 const express = require('express');
 const app = express();
-const CryptoJS = require('crypto');
+const AES = require('crypto-js/aes');
 const key = process.env.key;
 
 app.use(express.json());
@@ -17,25 +17,37 @@ let pool = new Pool({
 });
 
 const login = (req, res) => {
-    const username = req.params.username;
-    const password = req.params.password;
-    pool.query(`SELECT * FROM ${process.env.login_table} WHERE username=$1 AND password=$2`, [username, CryptoJS.AES.decrypt(password,key)], (err, results) => {
+    var authenticated = false;
+    let helper = '';
+    let{password, username} = req.body;
+    pool.query(`SELECT password FROM login WHERE username=$1`, [username], (err, result) => {
         if (err) {
             console.log(err);
         } else {
-            return res.json(results.rows);
+            if(AES.decrypt(res.json(result.rows),key) == password){
+                console.log('I worked');
+                authenticated=true;
+                helper=result[1];
+                res.status(200);
+                return authenticated, helper;
+            } else {
+                authenticated = false;
+                console.log("I didn't work");
+                return res.status(403);
+            }
         }
     });
 };
 
 const register = (req,res) => {
-    const username = req.params.username;
-    const password = req.params.password;
-    const name = req.params.name;
-    pool.query(`INSERT INTO users(name, username, password)VALUES($1,$2,$3)`,[name,username,CryptoJS.AES.encrypt(password,key)],(err,results) => {
+    let {username, password, name} = req.body;
+    password = AES.encrypt(password,key).toString();
+    pool.query(`INSERT INTO login (name, username, password) VALUES ($1,$2,$3)`,[name,username,password],(err,results) => {
         if(err){
             console.log(err);
-        } else {
+        }
+        else{
+            console.log(results);
             return res.json(results.rows);
         }
     });
