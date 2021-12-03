@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfigService } from '../../config.service';
 import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ticketviewer',
@@ -11,13 +12,17 @@ import { Title } from '@angular/platform-browser';
 export class TicketViewerComponent implements OnInit {
   tickets: any;
 
-  constructor(service: ConfigService, private titleService: Title) {
+  constructor(service: ConfigService, private titleService: Title, private router: Router) {
     const tickets = service.getTickets();
     this.tickets = tickets;
   }
 
   ngOnInit(): void {
+    if(!window.sessionStorage.getItem('authenticated')){
+      this.router.navigateByUrl('/login');
+    } else {
     this.titleService.setTitle('Ticket Viewer');
     return this.tickets;
+    }
   }
 }

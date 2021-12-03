@@ -18,6 +18,7 @@ import { AssetLookupComponent } from './_pages/asset-lookup/asset-lookup.compone
 import { LoaningTabComponent } from './_pages/loaning-tab/loaning-tab.component';
 import { TicketInfoComponent } from './_pages/ticket-info/ticket-info.component';
 import { RegisterComponent } from './_pages/register/register.component';
+import { LoginComponent } from './_pages/login/login.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { RegisterComponent } from './_pages/register/register.component';
     LoaningTabComponent,
     TicketInfoComponent,
     RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

@@ -18,9 +18,9 @@ export class RegisterComponent implements OnInit {
     this.userForm = this.formBuilder.group({
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
-      username: ['', [Validators.required, Validators.minLength, Validators.maxLength]],
+      username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength, Validators.maxLength]]
+      password: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(20)]]
     });
   }
 
@@ -30,11 +30,11 @@ export class RegisterComponent implements OnInit {
     if (this.userForm.invalid == true) {
       console.log('I am invalid');
       return;
-    }
-    else {
-      this.authService.register(this.userForm.get('username')?.value, 
-      (this.userForm.get('first_name')?.value + this.userForm.get('last_name')?.value), 
-      this.userForm.get('password')?.value)
+    } else {
+      this.authService.register(this.userForm.value['username'], (this.userForm.value['first_name'] + ' ' + this.userForm.value['last_name']), this.userForm.value['password'])
+        .subscribe(res => {
+          console.log(res);
+        });
     }
   }
 }

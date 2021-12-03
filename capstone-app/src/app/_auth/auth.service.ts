@@ -10,21 +10,25 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(username: string, password: string): Observable<any> {
-    var postMethod = this.http.post('localhost:3000/api/auth/login',{
+    var postMethod = this.http.post('http://localhost:3000/api/auth/login',{
       username: username,
       password: password
     });
-    console.log(postMethod);
+    // console.log(postMethod);
     return postMethod;
   }
 
   register(username: string, name: string, password: string): Observable<any>{
-    var postMethod = this.http.post('localhost:3000/api/auth/signup',{
+    var postMethod = this.http.post('http://localhost:3000/api/auth/signup',{
       username: username,
       password: password,
       name: name
     });
-    console.log(postMethod);
-    return postMethod
+    // console.log(postMethod);
+    return postMethod;
+  }
+
+  logout(): void {
+    
   }
 }

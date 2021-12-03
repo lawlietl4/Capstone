@@ -1,4 +1,7 @@
 <h2>Ticket Viewer</h2>
+<p>logged in as: {{helper}}</p>
+<button (click)="onclick()">{{loggedIn?"logout":"login"}}</button>
+<button (click)="onRegister()">register</button>
 <nav>
   <ul>
     <li *ngFor='let page of pages'>

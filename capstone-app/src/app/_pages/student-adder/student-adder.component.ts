@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-student-adder',
@@ -13,16 +14,22 @@ export class StudentAdderComponent implements OnInit {
   serialNo: string = '';
   email: string = '';
   name: string = '';
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private router: Router) {
   }
 
   ngOnInit(): void {
+    if (!window.sessionStorage.getItem('authenticated')){
+      window.alert('you are not logged in, please login');
+      this.router.navigateByUrl('/login');
+    }
+    else {
     this.userForm = this.formBuilder.group({
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       serial: ['', [Validators.required, Validators.pattern('[rR]{1}[9][0|1][a-zA-Z0-9]{5}')]],
     });
+  }
   }
 
   invalidFirstName() {
