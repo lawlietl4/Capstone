@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+/* body{
+    background-color: #636363;
+} */
 h2{
     text-align: center;
 }
@@ -21,7 +24,9 @@ li a{
 }
 li a:hover{
     background-color: #111;
+    color:#fd0;
 }
 li a.active{
-    background-color: #04aa6d;
+    background-color: #fd0;
+    color: #2e3845;
 }

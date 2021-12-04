@@ -43,11 +43,13 @@
                     <!-- Loaner ID -->
                     <div>{{ ticket.loanerid }}</div>
                 </td>
+                <td>
                 <a [routerLink]="['/ticket-viewer',ticket.id]">
                     <td>
                         View ticket
                     </td>
                 </a>
+            </td>
             </tr>
         </tbody>
     </table>

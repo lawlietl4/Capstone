@@ -12,7 +12,7 @@ export class RegisterComponent implements OnInit {
   userForm!: FormGroup;
   submitted: boolean = false;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService) { }
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.userForm = this.formBuilder.group({
@@ -35,6 +35,8 @@ export class RegisterComponent implements OnInit {
         .subscribe(res => {
           console.log(res);
         });
+      window.alert('user created, you are now being redirected to login');
+      this.router.navigateByUrl('/login');
     }
   }
 }

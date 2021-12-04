@@ -20,6 +20,7 @@ export class TicketViewerComponent implements OnInit {
   ngOnInit(): void {
     if(!window.sessionStorage.getItem('authenticated')){
       this.router.navigateByUrl('/login');
+      window.alert('You are not logged in, please sign in then try again');
     } else {
     this.titleService.setTitle('Ticket Viewer');
     return this.tickets;

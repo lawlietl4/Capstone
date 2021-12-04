@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
       if (!window.sessionStorage.getItem('authenticated')) {
         this.loggedIn = false;
         // this.router.navigateByUrl('/login');
-      } else if(window.sessionStorage.getItem('authenticated')) {
+      } else if (window.sessionStorage.getItem('authenticated')) {
         this.helper = window.sessionStorage.getItem('helper') as string;
         this.loggedIn = true;
         // this.router.navigateByUrl('/ticket-viewer');
@@ -29,8 +29,13 @@ export class AppComponent implements OnInit {
 
   }
   onclick(): void {
-    window.sessionStorage.clear();
-    location.reload();
+    if (location.pathname = '/register') {
+      this.router.navigateByUrl('/login');
+    } else {
+      this.router.navigateByUrl('/login');
+      window.sessionStorage.clear();
+      location.reload();
+    }
   }
   onRegister(): void {
     this.router.navigateByUrl('/register');
