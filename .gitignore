@@ -9,6 +9,7 @@ capstone-app/connect.lock
 capstone-app/coverage
 capsotne-app/libpeerconnection.log
 capstone-app/package-lock.json
+capstone-api/package-lock.json
 # Only exists if Bazel was run
 capstone-app/bazel-out
 
