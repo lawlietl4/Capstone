@@ -1,5 +1,6 @@
 {
     "scripts": {
+        "install": "(cd ./capstone-api && npm install) & (cd ./capstone-app && npm install)",
         "start": "(cd ./capstone-api && nodemon src/app/index.js) & (cd ./capstone-app && ng serve --proxy-config proxy.conf.json)",
         "test": "No test has been specified for this project!"
     }
