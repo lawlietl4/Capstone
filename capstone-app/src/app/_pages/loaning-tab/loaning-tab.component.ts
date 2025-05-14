@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-loaning-tab',
-  templateUrl: './loaning-tab.component.html',
-  styleUrls: ['./loaning-tab.component.css']
+    selector: 'app-loaning-tab',
+    templateUrl: './loaning-tab.component.html',
+    styleUrls: ['./loaning-tab.component.css'],
+    standalone: false
 })
 export class LoaningTabComponent implements OnInit {
 

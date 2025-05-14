@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-asset-lookup',
-  templateUrl: './asset-lookup.component.html',
-  styleUrls: ['./asset-lookup.component.css']
+    selector: 'app-asset-lookup',
+    templateUrl: './asset-lookup.component.html',
+    styleUrls: ['./asset-lookup.component.css'],
+    standalone: false
 })
 export class AssetLookupComponent implements OnInit {
 

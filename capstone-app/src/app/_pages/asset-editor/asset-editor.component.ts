@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-asset-editor',
-  templateUrl: './asset-editor.component.html',
-  styleUrls: ['./asset-editor.component.css']
+    selector: 'app-asset-editor',
+    templateUrl: './asset-editor.component.html',
+    styleUrls: ['./asset-editor.component.css'],
+    standalone: false
 })
 export class AssetEditorComponent implements OnInit {
 

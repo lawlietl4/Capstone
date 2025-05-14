@@ -4,9 +4,10 @@ import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-ticketviewer',
-  templateUrl: './ticketviewer.component.html',
-  styleUrls: ['./ticketviewer.component.css']
+    selector: 'app-ticketviewer',
+    templateUrl: './ticketviewer.component.html',
+    styleUrls: ['./ticketviewer.component.css'],
+    standalone: false
 })
 
 export class TicketViewerComponent implements OnInit {

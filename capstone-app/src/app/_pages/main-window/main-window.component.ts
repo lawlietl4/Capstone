@@ -3,9 +3,10 @@ import { Routes } from '@angular/router';
 import { TicketViewerComponent } from '../ticketviewer/ticketviewer.component';
 
 @Component({
-  selector: 'app-main-window',
-  templateUrl: './main-window.component.html',
-  styleUrls: ['./main-window.component.css']
+    selector: 'app-main-window',
+    templateUrl: './main-window.component.html',
+    styleUrls: ['./main-window.component.css'],
+    standalone: false
 })
 
 export class MainWindowComponent implements OnInit {

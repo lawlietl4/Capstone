@@ -3,9 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-student-adder',
-  templateUrl: './student-adder.component.html',
-  styleUrls: ['./student-adder.component.css']
+    selector: 'app-student-adder',
+    templateUrl: './student-adder.component.html',
+    styleUrls: ['./student-adder.component.css'],
+    standalone: false
 })
 export class StudentAdderComponent implements OnInit {
   submitted = false;

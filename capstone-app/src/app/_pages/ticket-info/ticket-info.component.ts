@@ -4,9 +4,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-ticket-info',
-  templateUrl: './ticket-info.component.html',
-  styleUrls: ['./ticket-info.component.css']
+    selector: 'app-ticket-info',
+    templateUrl: './ticket-info.component.html',
+    styleUrls: ['./ticket-info.component.css'],
+    standalone: false
 })
 export class TicketInfoComponent implements OnInit {
   id: any;

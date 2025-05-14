@@ -4,9 +4,10 @@ import { Router } from '@angular/router';
 import { GlobalConstants } from 'src/app/global-constants';
 
 @Component({
-  selector: 'app-ticket-editor',
-  templateUrl: './ticket-editor.component.html',
-  styleUrls: ['./ticket-editor.component.css']
+    selector: 'app-ticket-editor',
+    templateUrl: './ticket-editor.component.html',
+    styleUrls: ['./ticket-editor.component.css'],
+    standalone: false
 })
 export class TicketEditorComponent implements OnInit {
   requester: string = '';
