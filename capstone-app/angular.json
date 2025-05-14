@@ -72,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "capstone-app:build:production"
+              "buildTarget": "capstone-app:build:production"
             },
             "development": {
-              "browserTarget": "capstone-app:build:development"
+              "buildTarget": "capstone-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "capstone-app:build"
+            "buildTarget": "capstone-app:build"
           }
         },
         "test": {
