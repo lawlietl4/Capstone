@@ -1,7 +1,7 @@
 // angular core components
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 // forms modules
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,29 +20,22 @@ import { TicketInfoComponent } from './_pages/ticket-info/ticket-info.component'
 import { RegisterComponent } from './_pages/register/register.component';
 import { LoginComponent } from './_pages/login/login.component';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    MainWindowComponent,
-    PageNotFoundComponent,
-    TicketViewerComponent,
-    StudentAdderComponent,
-    TicketEditorComponent,
-    AssetViewerComponent,
-    AssetEditorComponent,
-    AssetLookupComponent,
-    LoaningTabComponent,
-    TicketInfoComponent,
-    RegisterComponent,
-    LoginComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    HttpClientModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        MainWindowComponent,
+        PageNotFoundComponent,
+        TicketViewerComponent,
+        StudentAdderComponent,
+        TicketEditorComponent,
+        AssetViewerComponent,
+        AssetEditorComponent,
+        AssetLookupComponent,
+        LoaningTabComponent,
+        TicketInfoComponent,
+        RegisterComponent,
+        LoginComponent
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }
