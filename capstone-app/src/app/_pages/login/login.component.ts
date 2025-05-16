@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/_auth/auth.service';
+import { GlobalConstants } from 'src/app/global-constants';
 
 @Component({
     selector: 'app-login',
@@ -26,7 +27,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.loginForm.value['username'], this.loginForm.value['password'])
       .subscribe(res => {
         // console.log(res);
-        window.sessionStorage.setItem('helper', `${res['helper']}`);
+        GlobalConstants.helper = `${res['helper']}`;
         window.sessionStorage.setItem('authenticated', `${res['authenticated']}`);
         this.router.navigateByUrl('/ticket-viewer');
       });

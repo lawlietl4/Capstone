@@ -7,20 +7,20 @@
     "start": "nodemon src/app/index.js"
   },
   "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.20.3",
+    "bcryptjs": "^3.0.2",
+    "body-parser": "^2.2.0",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "crypto-js": "^4.2.0",
     "db": "^6.0.3",
     "debug": "^4.4.0",
     "dotenv": "^16.4.7",
-    "express": "^4.21.2",
+    "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
     "node-jsonwebtoken": "^0.0.1",
-    "nodemailer": "^6.10.0",
+    "nodemailer": "^7.0.3",
     "pg": "^8.13.1",
     "pg-hstore": "^2.3.4",
-    "uuid": "^11.0.5"
+    "uuid": "^11.1.0"
   }
 }

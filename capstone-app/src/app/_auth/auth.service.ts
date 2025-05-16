@@ -29,6 +29,7 @@ export class AuthService {
   }
 
   logout(): void {
-    
+    window.sessionStorage.setItem('helper','');
+    window.sessionStorage.setItem('authenticated','false')
   }
 }

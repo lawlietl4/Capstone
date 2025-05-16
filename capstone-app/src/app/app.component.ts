@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
       if (location.pathname == '/login') return;
       if (!window.sessionStorage.getItem('authenticated')) {
         this.loggedIn = false;
-        // this.router.navigateByUrl('/login');
+        this.router.navigateByUrl('/login');
       } else if (window.sessionStorage.getItem('authenticated')) {
         this.helper = window.sessionStorage.getItem('helper') as string;
         this.loggedIn = true;

@@ -18,7 +18,7 @@ export class TicketEditorComponent implements OnInit {
   submitted = false;
   registered = false;
   ticketForm!: FormGroup;
-  helper: string = GlobalConstants.helper;
+  helper: string|null = GlobalConstants.helper;
 
   constructor(private formBuilder: FormBuilder, private router: Router) { }
 
@@ -33,7 +33,7 @@ export class TicketEditorComponent implements OnInit {
         last_name: ['', Validators.required],
         email: ['', [Validators.required, Validators.email]],
         loaner: ['', [Validators.required, Validators.pattern('^[0-9]{5}(?:-[0-9]{4})?$')]],
-        helper: [this.helper, [Validators.required]],
+        // helper: [this.helper, [Validators.required]],
         description: ['', Validators.required],
         title: ['', Validators.required]
       });
@@ -70,7 +70,7 @@ export class TicketEditorComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    // console.log(this.ticketForm.value);
+    console.log(this.ticketForm.value);
     if (this.ticketForm.invalid == true) {
       return;
     }
@@ -81,7 +81,7 @@ export class TicketEditorComponent implements OnInit {
       this.loaner = this.ticketForm.value['loaner'];
       this.description = this.ticketForm.value['description'];
       this.title = this.ticketForm.value['title'];
-      this.helper = this.ticketForm.value['helper'];
+      this.helper = window.sessionStorage.value['helper'];
       fetch('http://localhost:3000/api/tickets',
         {
           method: 'POST',
