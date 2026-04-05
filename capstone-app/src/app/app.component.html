@@ -4,13 +4,15 @@
 <button class="btn btn-primary" (click)="onRegister()">{{!loggedIn?"register":""}}</button>
 <nav>
   <ul>
-    <li *ngFor='let page of pages'>
-      <div id='page.name'>
-        <a [routerLinkActive]="'active'" [title]="page.description" [routerLink]="['/', page.url]">
-          {{ page.name }}
-        </a>
-      </div>
-    </li>
+    @for (page of pages; track page) {
+      <li>
+        <div id='page.name'>
+          <a [routerLinkActive]="'active'" [title]="page.description" [routerLink]="['/', page.url]">
+            {{ page.name }}
+          </a>
+        </div>
+      </li>
+    }
   </ul>
 </nav>
 <router-outlet></router-outlet>
